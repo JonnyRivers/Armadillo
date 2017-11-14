@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Armadillo.ViewModels;
@@ -14,28 +11,35 @@ namespace GoogleMaps
     {
         private IGoogleMapsApiService _googleMapsApiService;
 
+        private ImageSource _viewportImageSource;
+        private int _zoom;
+
         public MainWindowViewModel(IGoogleMapsApiService googleMapsApiService)
         {
             _googleMapsApiService = googleMapsApiService;
+            _zoom = 14;
 
-            Task.Factory.StartNew(LoadViewportAsync);
+            RefreshViewport();
         }
 
-        private async Task LoadViewportAsync()
+        private async Task RefreshViewportAsync()
         {
-            Stream imageStream = await _googleMapsApiService.GetViewportStreamAsync();
+            Stream imageStream = await _googleMapsApiService.GetViewportStreamAsync(_zoom);
 
             await App.Current.Dispatcher.BeginInvoke((Action)delegate () {
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
                 bitmapImage.StreamSource = imageStream;
                 bitmapImage.EndInit();
-                
+
                 ViewportImageSource = bitmapImage;
             });
         }
 
-        private ImageSource _viewportImageSource;
+        private void RefreshViewport()
+        {
+            Task.Factory.StartNew(RefreshViewportAsync);
+        }
 
         public ImageSource ViewportImageSource
         {
@@ -47,6 +51,21 @@ namespace GoogleMaps
                     _viewportImageSource = value;
 
                     OnPropertyChanged();
+                }
+            }
+        }
+
+        public int Zoom
+        {
+            get => _zoom;
+            set
+            {
+                if (_zoom != value)
+                {
+                    _zoom = value;
+
+                    OnPropertyChanged();
+                    RefreshViewport();
                 }
             }
         }

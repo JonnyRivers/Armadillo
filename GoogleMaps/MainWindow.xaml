@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Image Source="{Binding ViewportImageSource}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="{Binding ViewportImageSource}"/>
+        <Slider Grid.Row="1" Value="{Binding Zoom}" Minimum="1" Maximum="30"/>
     </Grid>
 </Window>

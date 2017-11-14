@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace GoogleMaps
 {
     public interface IMainWindowViewModel
     {
         ImageSource ViewportImageSource { get; set; }
+        int Zoom { get; set; }
     }
 }
