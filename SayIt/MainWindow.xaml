@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SayIt"
         mc:Ignorable="d"
-        Title="SayIt™" Height="350" Width="525">
-    <Grid>
+        Title="SayIt™" 
+        Height="200" Width="400">
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -17,9 +18,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2">What would you like me to say?</TextBlock>
-        <TextBox Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding TextToSpeak}" TextWrapping="Wrap"></TextBox>
-        <Button Grid.Row="2" Grid.Column="0" Command="{Binding SpeakCommand}">Speak</Button>
-        <Button Grid.Row="2" Grid.Column="1" Command="{Binding StopCommand}">Stop</Button>
+        <TextBlock Margin="5" Grid.Row="0" Grid.ColumnSpan="2">What would you like me to say?</TextBlock>
+        <TextBox Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding TextToSpeak}" TextWrapping="Wrap"></TextBox>
+        <Button Margin="5" Grid.Row="2" Grid.Column="0" Command="{Binding SpeakCommand}">Speak</Button>
+        <Button Margin="5" Grid.Row="2" Grid.Column="1" Command="{Binding StopCommand}">Stop</Button>
     </Grid>
 </Window>

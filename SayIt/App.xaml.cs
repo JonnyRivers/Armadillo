@@ -1,13 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using SayIt.ApplicationServices;
 using SayIt.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SayIt
@@ -21,6 +15,13 @@ namespace SayIt
         {
             base.OnStartup(e);
 
+            IServiceProvider serviceProvider = BuildServiceProvider();
+            Window mainWindow = serviceProvider.GetService<MainWindow>();
+            mainWindow.Show();
+        }
+
+        private IServiceProvider BuildServiceProvider()
+        {
             var serviceCollection = new ServiceCollection();
 
             // Framework services
@@ -37,8 +38,7 @@ namespace SayIt
 
             IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
-            Window mainWindow = serviceProvider.GetService<MainWindow>();
-            mainWindow.Show();
+            return serviceProvider;
         }
     }
 }
