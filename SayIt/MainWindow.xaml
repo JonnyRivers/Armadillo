@@ -12,9 +12,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0">What would you like me to say?</TextBlock>
-        <TextBox Grid.Row="1" Text="{Binding TextToSpeak}" TextWrapping="Wrap"></TextBox>
-        <Button Grid.Row="2" Command="{Binding SayItCommand}">Say It</Button>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2">What would you like me to say?</TextBlock>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding TextToSpeak}" TextWrapping="Wrap"></TextBox>
+        <Button Grid.Row="2" Grid.Column="0" Command="{Binding SpeakCommand}">Speak</Button>
+        <Button Grid.Row="2" Grid.Column="1" Command="{Binding StopCommand}">Stop</Button>
     </Grid>
 </Window>

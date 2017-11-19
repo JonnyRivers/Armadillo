@@ -9,5 +9,6 @@ namespace SayIt.ApplicationServices
     public interface ISpeechSynthesisService
     {
         void Speak(string text);
+        void Stop();
     }
 }

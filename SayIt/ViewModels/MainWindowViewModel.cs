@@ -25,7 +25,8 @@ namespace SayIt.ViewModels
             _textToSpeak = DefaultTextToSpeak;
         }
 
-        public ICommand SayItCommand => new RelayCommand(SaySomethingExecute);
+        public ICommand SpeakCommand => new RelayCommand(SpeakExecute);
+        public ICommand StopCommand => new RelayCommand(StopExecute);
 
         public string TextToSpeak
         {
@@ -43,9 +44,14 @@ namespace SayIt.ViewModels
             }
         }
 
-        private void SaySomethingExecute(object obj)
+        private void SpeakExecute(object obj)
         {
             _speechSynthesisService.Speak(TextToSpeak);
+        }
+
+        private void StopExecute(object obj)
+        {
+            _speechSynthesisService.Stop();
         }
     }
 }
