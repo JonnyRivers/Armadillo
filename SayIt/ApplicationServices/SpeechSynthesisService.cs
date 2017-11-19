@@ -23,6 +23,8 @@ namespace SayIt.ApplicationServices
             _currentPrompt = null;
         }
 
+        public event Action SpeakCompleted = delegate { };
+
         public void Speak(string textToSpeak)
         {
             _currentPrompt = _speechSynthesizer.SpeakAsync(textToSpeak);
@@ -38,6 +40,7 @@ namespace SayIt.ApplicationServices
 
         private void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
+            SpeakCompleted();
             _currentPrompt = null;
         }
     }

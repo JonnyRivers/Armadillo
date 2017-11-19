@@ -17,16 +17,25 @@ namespace SayIt.ViewModels
         private ISpeechSynthesisService _speechSynthesisService;
 
         private string _textToSpeak;
+        private bool _isSpeaking;
 
         public MainWindowViewModel(ISpeechSynthesisService speechSynthesisService)
         {
             _speechSynthesisService = speechSynthesisService;
+            _speechSynthesisService.SpeakCompleted += OnSpeakCompleted;
 
             _textToSpeak = DefaultTextToSpeak;
+            _isSpeaking = false;
         }
 
-        public ICommand SpeakCommand => new RelayCommand(SpeakExecute);
-        public ICommand StopCommand => new RelayCommand(StopExecute);
+        private void OnSpeakCompleted()
+        {
+            _isSpeaking = false;
+            CommandManager.InvalidateRequerySuggested();
+        }
+
+        public ICommand SpeakCommand => new RelayCommand(SpeakExecute, SpeakCanExecute);
+        public ICommand StopCommand => new RelayCommand(StopExecute, StopCanExecute);
 
         public string TextToSpeak
         {
@@ -47,11 +56,23 @@ namespace SayIt.ViewModels
         private void SpeakExecute(object obj)
         {
             _speechSynthesisService.Speak(TextToSpeak);
+            _isSpeaking = true;
+        }
+
+        private bool SpeakCanExecute(object obj)
+        {
+            return !_isSpeaking;
         }
 
         private void StopExecute(object obj)
         {
             _speechSynthesisService.Stop();
+            _isSpeaking = false;
+        }
+
+        private bool StopCanExecute(object obj)
+        {
+            return _isSpeaking;
         }
     }
 }
