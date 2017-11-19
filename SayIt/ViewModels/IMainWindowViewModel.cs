@@ -9,6 +9,7 @@ namespace SayIt.ViewModels
 {
     public interface IMainWindowViewModel
     {
-        ICommand SaySomethingCommand { get; }
+        string TextToSpeak { get; set; }
+        ICommand SayItCommand { get; }
     }
 }
