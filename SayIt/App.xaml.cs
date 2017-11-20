@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SayIt.ApplicationServices;
 using SayIt.ViewModels;
 using System;
@@ -25,6 +26,8 @@ namespace SayIt
             var serviceCollection = new ServiceCollection();
 
             // Framework services
+            ILoggerFactory loggerFactory = new LoggerFactory().AddDebug();
+            serviceCollection.AddSingleton(loggerFactory);
             serviceCollection.AddLogging();
 
             // Application services

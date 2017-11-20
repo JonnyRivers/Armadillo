@@ -23,6 +23,8 @@ namespace SayIt.ApplicationServices
 
         public void Speak(string textToSpeak)
         {
+            _logger.LogInformation($"Speak({textToSpeak})");
+
             _currentPrompt = _speechSynthesizer.SpeakAsync(textToSpeak);
         }
 
