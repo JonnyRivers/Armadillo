@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps", "GoogleMaps\Go
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayIt", "SayIt\SayIt.csproj", "{3FEDEF9E-5D9A-4158-BFDD-17BA7CFE7A3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{8544198C-B3C6-4958-84AA-FE0F4243A52F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkers", "Checkers\Checkers.csproj", "{5DFA3DBB-CF73-4CB2-8E2D-C881103EBFD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{3FEDEF9E-5D9A-4158-BFDD-17BA7CFE7A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FEDEF9E-5D9A-4158-BFDD-17BA7CFE7A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FEDEF9E-5D9A-4158-BFDD-17BA7CFE7A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8544198C-B3C6-4958-84AA-FE0F4243A52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8544198C-B3C6-4958-84AA-FE0F4243A52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8544198C-B3C6-4958-84AA-FE0F4243A52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8544198C-B3C6-4958-84AA-FE0F4243A52F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFA3DBB-CF73-4CB2-8E2D-C881103EBFD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFA3DBB-CF73-4CB2-8E2D-C881103EBFD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFA3DBB-CF73-4CB2-8E2D-C881103EBFD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFA3DBB-CF73-4CB2-8E2D-C881103EBFD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
