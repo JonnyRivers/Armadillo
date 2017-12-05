@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Navigation;
 
 namespace DoogleMaps
 {
@@ -19,12 +14,32 @@ namespace DoogleMaps
         {
             base.OnStartup(e);
 
-            // TODO: Use DI as this grows
-            var googleMapsApiService = new GoogleMapsApiService();
-            var mainWindowViewModel = new MainWindowViewModel(googleMapsApiService);
-            var mainWindow = new MainWindow(mainWindowViewModel);
-
+            IServiceProvider serviceProvider = BuildServiceProvider();
+            Window mainWindow = serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
+        }
+
+        private IServiceProvider BuildServiceProvider()
+        {
+            var serviceCollection = new ServiceCollection();
+
+            // Framework services
+            ILoggerFactory loggerFactory = new LoggerFactory().AddDebug();
+            serviceCollection.AddSingleton(loggerFactory);
+            serviceCollection.AddLogging();
+
+            // Application services
+            serviceCollection.AddTransient<IGoogleMapsApiService, GoogleMapsApiService>();
+
+            // View models
+            serviceCollection.AddTransient<IMainWindowViewModel, MainWindowViewModel>();
+
+            // Views
+            serviceCollection.AddTransient<MainWindow>();
+
+            IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
+
+            return serviceProvider;
         }
     }
 }
