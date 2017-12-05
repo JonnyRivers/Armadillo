@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armadillo.Core", "Armadillo.Core\Armadillo.Core.csproj", "{8757BD9F-F695-49C6-918E-42BCF7B3E460}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps", "GoogleMaps\GoogleMaps.csproj", "{E644EDB1-9DC6-458E-A063-02F256EE9EBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoogleMaps", "GoogleMaps\DoogleMaps.csproj", "{E644EDB1-9DC6-458E-A063-02F256EE9EBB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayIt", "SayIt\SayIt.csproj", "{3FEDEF9E-5D9A-4158-BFDD-17BA7CFE7A3F}"
 EndProject
