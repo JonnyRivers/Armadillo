@@ -7,24 +7,25 @@ namespace DoogleMaps
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IMainWindowViewModel _viewModel;
+
         public MainWindow(IMainWindowViewModel viewModel)
         {
             InitializeComponent();
 
+            _viewModel = viewModel;
             DataContext = viewModel;
         }
 
         private void Image_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
-            IMainWindowViewModel viewModel = (IMainWindowViewModel)DataContext;
-
             if (e.Delta > 0)
             {
-                ++viewModel.Zoom;
+                ++_viewModel.Zoom;
             }
             else if (e.Delta < 0)
             {
-                --viewModel.Zoom;
+                --_viewModel.Zoom;
             }
         }
     }
