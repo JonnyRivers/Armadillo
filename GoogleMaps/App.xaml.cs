@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
-namespace GoogleMaps
+namespace DoogleMaps
 {
     /// <summary>
     /// Interaction logic for App.xaml

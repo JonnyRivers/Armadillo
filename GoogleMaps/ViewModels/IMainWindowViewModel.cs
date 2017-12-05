@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace GoogleMaps
+namespace DoogleMaps
 {
     public interface IMainWindowViewModel
     {
@@ -8,6 +8,5 @@ namespace GoogleMaps
         double Longitude { get; set; }
         int Zoom { get; set; }
         ImageSource ViewportImageSource { get; set; }
-        
     }
 }

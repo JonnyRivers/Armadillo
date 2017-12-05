@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace GoogleMaps
+namespace DoogleMaps
 {
     public class GoogleMapsApiService : IGoogleMapsApiService
     {

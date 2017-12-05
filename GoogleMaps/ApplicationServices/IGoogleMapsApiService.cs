@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-namespace GoogleMaps
+namespace DoogleMaps
 {
     public interface IGoogleMapsApiService
     {

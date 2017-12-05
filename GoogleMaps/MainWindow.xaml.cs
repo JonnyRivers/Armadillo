@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace GoogleMaps
+namespace DoogleMaps
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -5,7 +5,7 @@ using System.Windows.Media;
 using Armadillo.ViewModels;
 using System.Windows.Media.Imaging;
 
-namespace GoogleMaps
+namespace DoogleMaps
 {
     public class MainWindowViewModel : BaseViewModel, IMainWindowViewModel
     {
