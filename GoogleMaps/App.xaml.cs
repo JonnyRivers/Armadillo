@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Armadillo.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Windows;
@@ -29,6 +30,7 @@ namespace DoogleMaps
             serviceCollection.AddLogging();
 
             // Application services
+            serviceCollection.AddTransient<IHttpClientFactory, HttpClientFactory>();
             serviceCollection.AddTransient<IGoogleMapsApiService, GoogleMapsApiService>();
 
             // View models
