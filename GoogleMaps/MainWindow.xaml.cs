@@ -13,5 +13,19 @@ namespace DoogleMaps
 
             DataContext = viewModel;
         }
+
+        private void Image_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            IMainWindowViewModel viewModel = (IMainWindowViewModel)DataContext;
+
+            if (e.Delta > 0)
+            {
+                ++viewModel.Zoom;
+            }
+            else if (e.Delta < 0)
+            {
+                --viewModel.Zoom;
+            }
+        }
     }
 }

@@ -23,6 +23,13 @@
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Longitude}"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Margin="5">Zoom: </TextBlock>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Zoom}"/>
-        <Image Grid.Row="3" Grid.ColumnSpan="2" Margin="5" Source="{Binding ViewportImageSource}" Width="512" Height="512"/>
+        <Image 
+            Grid.Row="3" 
+            Grid.ColumnSpan="2" 
+            Margin="5" 
+            Source="{Binding ViewportImageSource}" 
+            Width="512" 
+            Height="512"
+            MouseWheel="Image_MouseWheel"/>
     </Grid>
 </Window>
