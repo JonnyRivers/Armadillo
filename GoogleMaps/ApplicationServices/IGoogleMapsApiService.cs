@@ -5,6 +5,6 @@ namespace GoogleMaps
 {
     public interface IGoogleMapsApiService
     {
-        Task<Stream> GetViewportStreamAsync(int zoom);
+        Task<Stream> GetViewportStreamAsync(double latitude, double longitude, int width, int height, int zoom);
     }
 }
