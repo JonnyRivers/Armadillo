@@ -24,13 +24,16 @@ namespace DoogleMaps
 
         private void OnViewportMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
+            // Should this be handled in XAML?  Does it matter as long as the viewmodel is testable?
             if (e.Delta > 0)
             {
-                _viewModel.ZoomInCommand.Execute(null);
+                if(_viewModel.ZoomInCommand.CanExecute(null))
+                    _viewModel.ZoomInCommand.Execute(null);
             }
             else if (e.Delta < 0)
             {
-                _viewModel.ZoomOutCommand.Execute(null);
+                if (_viewModel.ZoomOutCommand.CanExecute(null))
+                    _viewModel.ZoomOutCommand.Execute(null);
             }
         }
 

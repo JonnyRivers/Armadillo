@@ -14,7 +14,9 @@ namespace DoogleMaps
     {
         private const double DefaultLatitude = 51;
         private const double DefaultLongitude = 0;
+        private const int MinimumZoom = 0;
         private const int DefaultZoom = 10;
+        private const int MaximumZoom = 18;
         private const int DefaultWidth = 512;
         private const int DefaultHeight = 512;
 
@@ -38,8 +40,8 @@ namespace DoogleMaps
             _zoom = DefaultZoom;
 
             _viewportScrollCommand = new RelayCommand(ViewportScrollExecute);
-            _zoomInCommand = new RelayCommand(ZoomInExecute);
-            _zoomOutCommand = new RelayCommand(ZoomOutExecute);
+            _zoomInCommand = new RelayCommand(ZoomInExecute, ZoomInCanExecute);
+            _zoomOutCommand = new RelayCommand(ZoomOutExecute, ZoomOutCanExecute);
 
             RefreshViewport();
         }
@@ -157,9 +159,19 @@ namespace DoogleMaps
             ++Zoom;
         }
 
+        private bool ZoomInCanExecute(object obj)
+        {
+            return Zoom < MaximumZoom;
+        }
+
         private void ZoomOutExecute(object obj)
         {
             --Zoom;
+        }
+
+        private bool ZoomOutCanExecute(object obj)
+        {
+            return Zoom > MinimumZoom;
         }
     }
 }
