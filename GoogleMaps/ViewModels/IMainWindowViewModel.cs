@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System.Windows.Input;
+using System.Windows.Media;
 
 namespace DoogleMaps
 {
@@ -8,5 +9,9 @@ namespace DoogleMaps
         double Longitude { get; set; }
         int Zoom { get; set; }
         ImageSource ViewportImageSource { get; set; }
+
+        ICommand ViewportScrollCommand { get; }
+        ICommand ZoomInCommand { get; }
+        ICommand ZoomOutCommand { get; }
     }
 }

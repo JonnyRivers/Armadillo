@@ -22,19 +22,22 @@ namespace DoogleMaps
             DataContext = viewModel;
         }
 
-        private void Image_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        private void OnViewportMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
+            // Should this be handled in XAML?  Does it matter as long as the viewmodel is testable?
             if (e.Delta > 0)
             {
-                ++_viewModel.Zoom;
+                if(_viewModel.ZoomInCommand.CanExecute(null))
+                    _viewModel.ZoomInCommand.Execute(null);
             }
             else if (e.Delta < 0)
             {
-                --_viewModel.Zoom;
+                if (_viewModel.ZoomOutCommand.CanExecute(null))
+                    _viewModel.ZoomOutCommand.Execute(null);
             }
         }
 
-        private void Image_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void OnViewportMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Point position = e.GetPosition(null);
             _logger.LogInformation($"Image_MouseUp @ {position.X},{position.Y}");
@@ -42,20 +45,10 @@ namespace DoogleMaps
             Vector movement = _mouseDownPosition - position;
             _logger.LogInformation($"Image_MouseUp movement - {movement.X},{movement.Y}");
 
-            double numTiles = System.Math.Pow(2, _viewModel.Zoom);
-            double numPixels = numTiles * 256;
-
-            double pixelsPerLatitude = numPixels / 180;
-            double pixelsPerLongitude = numPixels / 360;
-
-            double latitudeDelta = movement.Y / pixelsPerLatitude;
-            double longitudeDelta = movement.X / pixelsPerLongitude;
-
-            _viewModel.Latitude -= latitudeDelta;
-            _viewModel.Longitude += longitudeDelta;
+            _viewModel.ViewportScrollCommand.Execute(movement);
         }
 
-        private void Image_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void OnViewportMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _mouseDownPosition = e.GetPosition(null);
             _logger.LogInformation($"Image_MouseDown @ {_mouseDownPosition.X},{_mouseDownPosition.Y}");

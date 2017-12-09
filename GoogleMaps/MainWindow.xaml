@@ -30,8 +30,8 @@
             Source="{Binding ViewportImageSource}" 
             Width="512" 
             Height="512"
-            MouseUp="Image_MouseUp"
-            MouseDown="Image_MouseDown"
-            MouseWheel="Image_MouseWheel"/>
+            MouseUp="OnViewportMouseUp"
+            MouseDown="OnViewportMouseDown"
+            MouseWheel="OnViewportMouseWheel"/>
     </Grid>
 </Window>
