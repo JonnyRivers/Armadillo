@@ -17,7 +17,7 @@ namespace SayIt
             base.OnStartup(e);
 
             IServiceProvider serviceProvider = BuildServiceProvider();
-            Window mainWindow = serviceProvider.GetService<MainWindow>();
+            Window mainWindow = serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
 
